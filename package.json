@@ -1,8 +1,7 @@
 {
   "name": "glee",
   "version": "0.0.0",
-  "description":
-    "Hapi boilerplate with glue, jest, ES6+ (stage-3), build scripts and everything you need to quick-start backend development with Flow type checking.",
+  "description": "Hapi boilerplate with glue, jest, ES6+ (stage-3), build scripts and everything you need to quick-start backend development with Flow type checking.",
   "engineStrict": true,
   "engines": {
     "node": ">=6.9"
@@ -43,7 +42,7 @@
     "request": "^2.81.0"
   },
   "dependencies": {
-    "awilix": "^2.7.0",
+    "awilix": "^3.0.7",
     "babel-runtime": "^6.25.0",
     "blipp": "^2.3.0",
     "global": "^4.3.2",
@@ -84,8 +83,7 @@
     "debug": "nodemon --inspect=0.0.0.0:9229 ./dist/server.js",
     "aat": "./node_modules/cucumber/bin/cucumber.js",
     "lint:staged": "lint-staged",
-    "first-time":
-      "cp ./src/config/sequelize.js.sample ./src/config/sequelize.js && cp ./src/config/loggly.js.sample ./src/config/loggly.js",
+    "first-time": "cp ./src/config/sequelize.js.sample ./src/config/sequelize.js && cp ./src/config/loggly.js.sample ./src/config/loggly.js",
     "docker:start": "docker-compose up --build",
     "docker:stop": "docker-compose down"
   },
@@ -101,12 +99,20 @@
   "homepage": "https://github.com/acklenavenue/glee#readme",
   "jest": {
     "testEnvironment": "node",
-    "moduleFileExtensions": ["js"],
+    "moduleFileExtensions": [
+      "js"
+    ],
     "coverageDirectory": "coverage",
-    "collectCoverageFrom": ["src/domain/**/*.js", "!src/**/index.js"]
+    "collectCoverageFrom": [
+      "src/domain/**/*.js",
+      "!src/**/index.js"
+    ]
   },
   "lint-staged": {
-    "*.js": ["lint", "git add"]
+    "*.js": [
+      "lint",
+      "git add"
+    ]
   },
   "pre-commit": "lint:staged"
 }

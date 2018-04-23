@@ -1,7 +1,9 @@
 /* eslint-disable no-console, no-param-reassign */
 
 import * as mototaxi from 'mototaxi';
+import { AwilixResolutionError } from 'awilix';
 import container from '../container';
+
 import { commandHandlers } from '../../domain';
 
 export function register(server: Object, options: Object, next: () => mixed) {
@@ -12,8 +14,15 @@ export function register(server: Object, options: Object, next: () => mixed) {
   };
 
   const resolve = (handlerType) => {
-    const resolved = container.resolve(`${handlerType.name}Handler`);
-    return resolved;
+    try {
+      const resolved = container.resolve(`${handlerType.name}Handler`);
+      return resolved;
+    } catch (err) {
+      if (err instanceof AwilixResolutionError) {
+        console.log(err);
+      }
+      throw err;
+    }
   };
 
   const config = {
