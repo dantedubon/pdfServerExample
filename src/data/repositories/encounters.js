@@ -3,8 +3,8 @@ import type { Repository, Model, Error } from '../../domain/types/common';
 
 export default class Encounters implements Repository<number, Encounter> {
   model: Model<number, Encounter>;
-  constructor({ model }: Object) {
-    this.model = model;
+  constructor({ encounterModel }: Object) {
+    this.model = encounterModel;
   }
 
   getAll(): Promise<Array<Encounter>> {
