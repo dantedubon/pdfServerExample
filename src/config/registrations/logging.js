@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+
 const GoodWinston = require('good-winston');
 const winston = require('winston');
 require('winston-loggly');
@@ -11,7 +12,10 @@ if (env === 'production') {
 }
 
 if (env === 'dev') {
-  winston.add(winston.transports.File, { level: 'error', filename: 'errorLogs.log' });
+  winston.add(winston.transports.File, {
+    level: 'error',
+    filename: 'errorLogs.log',
+  });
 }
 const goodWinstonStream = new GoodWinston({ winston });
 

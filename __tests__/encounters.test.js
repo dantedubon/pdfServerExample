@@ -1,7 +1,11 @@
 import Encounters from '../src/domain/command-handlers/encounters';
 
 describe('The command-handler example, Encounters', () => {
-  const db = [{ id: 1, userId: 'abc' }, { id: 2, userId: 'abc' }, { id: 3, userId: 'xyz' }];
+  const db = [
+    { id: 1, userId: 'abc' },
+    { id: 2, userId: 'abc' },
+    { id: 3, userId: 'xyz' },
+  ];
   const mockRepository = {
     getAll: jest.fn(() => db),
     getById: jest.fn((id) => db.find((o) => o.id === id)),
@@ -39,7 +43,7 @@ describe('The command-handler example, Encounters', () => {
   describe('when creating an encounter', () => {
     it('should add the encounter to the database', async () => {
       const toCreate = { name: 'Mickey Mouse' };
-      const created = await encounters.createEncounter(toCreate);
+      const created = await encounters.createEncounter({ encounter: toCreate });
       expect(db).toContain(created);
     });
   });

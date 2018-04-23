@@ -3,6 +3,7 @@
 const fs = require('fs');
 
 const getFilesInDirectory = (p) => fs.readdirSync(p).filter((f) => !fs.statSync(`${p}/${f}`).isDirectory());
+// $FlowFixMe
 const getArrayFromFiles = (path) => getFilesInDirectory(path).map((filename) => require(`${path}/${filename}`).default);
 
 const commandHandlers = getArrayFromFiles(`${__dirname}/command-handlers`);
