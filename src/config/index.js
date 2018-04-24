@@ -18,6 +18,6 @@ const infrastructurePlugins = getArrayFromFiles(`${__dirname}/registrations`);
 const routePlugins = getDirectoriesInPath(`${__dirname}/../routes`).map((d) => ({
   plugin: `./routes/${d}`,
 }));
-const registrations = [].concat(infrastructurePlugins, routePlugins);
+const registrations: Array<any> = [].concat(infrastructurePlugins, routePlugins);
 
 export { connections, registrations };
