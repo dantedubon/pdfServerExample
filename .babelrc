@@ -1,12 +1,16 @@
 {
+  "presets": ["env"],
   "plugins": [
     ["transform-es2015-modules-commonjs"],
     ["transform-flow-strip-types"],
     ["transform-async-to-generator"],
-    ["transform-runtime", {
-      "polyfill": false,
-      "regenerator": true
-    }]
+    [
+      "transform-runtime",
+      {
+        "polyfill": false,
+        "regenerator": true
+      }
+    ]
   ],
   "env": {
     "production": {
