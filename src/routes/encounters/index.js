@@ -22,12 +22,10 @@ export function register(server: Object, options: Object, next: () => mixed) {
         auth: 'jwt',
         tags: ['api'],
         handler: (request, reply) => {
-          reply(
-            dispatch({
-              type: 'getAllEncounters',
-              userId: request.auth.credentials.id,
-            }),
-          );
+          reply(dispatch({
+            type: 'getAllEncounters',
+            userId: request.auth.credentials.id,
+          }));
         },
         validate: {
           headers: headersValidation,
@@ -79,14 +77,12 @@ export function register(server: Object, options: Object, next: () => mixed) {
         auth: 'jwt',
         tags: ['api'],
         handler: (request, reply) => {
-          reply(
-            dispatch({
-              type: 'createEncounter',
-              name: 'purple-urple',
-              age: 25,
-              bloodType: 'B+',
-            }),
-          );
+          reply(dispatch({
+            type: 'createEncounter',
+            name: 'purple-urple',
+            age: 25,
+            bloodType: 'B+',
+          }));
         },
         validate: {
           headers: headersValidation,
@@ -101,13 +97,11 @@ export function register(server: Object, options: Object, next: () => mixed) {
         auth: 'jwt',
         tags: ['api'],
         handler: (request, reply) => {
-          reply(
-            dispatch({
-              type: 'modifyEncounter',
-              id: request.params.id,
-              modify: { name: 'cambióaaaaaaa', age: 40 },
-            }),
-          );
+          reply(dispatch({
+            type: 'modifyEncounter',
+            id: request.params.id,
+            modify: { name: 'cambióaaaaaaa', age: 40 },
+          }));
         },
         validate: {
           headers: headersValidation,
