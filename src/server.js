@@ -9,14 +9,17 @@ const options = {
   relativeTo: __dirname,
 };
 
-Glue.compose(manifest, options, (err, server) => {
-  if (err) {
-    throw err;
+const startServer = async () => {
+  try {
+    const server = await Glue.compose(manifest, options);
+    await models.sequelize.sync();
+    await server.start();
+    console.log(`✅  ${Pack.name} started.`);
+    console.log('hapi days!');
+  } catch (err) {
+    console.error(err);
+    process.exit(1);
   }
+};
 
-  models.sequelize.sync().then(() => {
-    server.start(() => {
-      console.log(`✅  ${Pack.name} started.`);
-    });
-  });
-});
+startServer();

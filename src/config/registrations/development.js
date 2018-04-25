@@ -1,18 +1,14 @@
 const Pack = require('../../package.json');
 
-export default [{
-  plugin: {
-    register: 'inert',
+export default [
+  {
+    plugin: 'inert',
   },
-},
-{
-  plugin: {
-    register: 'vision',
+  {
+    plugin: 'vision',
   },
-},
-{
-  plugin: {
-    register: 'hapi-swagger',
+  {
+    plugin: 'hapi-swagger',
     options: {
       info: {
         title: `${Pack.name} API Documentation`,
@@ -27,10 +23,7 @@ export default [{
       documentationPath: '/docs',
     },
   },
-},
-{
-  plugin: {
-    register: 'blipp',
+  {
+    plugin: 'blipp',
   },
-},
 ];
