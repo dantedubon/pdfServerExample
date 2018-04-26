@@ -4,10 +4,10 @@
   "description": "Hapi boilerplate with glue, jest, ES6+ (stage-3), build scripts and everything you need to quick-start backend development with Flow type checking.",
   "engineStrict": true,
   "engines": {
-    "node": ">=6.9"
+    "node": ">=8.11.1"
   },
   "devDependencies": {
-    "aws-sdk": "^2.96.0",
+    "aws-sdk": "^2.229.1",
     "babel-cli": "^6.24.1",
     "babel-core": "~6.26.2",
     "babel-eslint": "^8.2.2",
@@ -23,7 +23,7 @@
     "babel-register": "^6.24.1",
     "cfn": "^1.2.0",
     "chai": "^4.1.1",
-    "cucumber": "^2.3.1",
+    "cucumber": "^4.2.1",
     "eslint": "^4.10.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-import-resolver-node": "^0.3.1",
@@ -32,7 +32,7 @@
     "flow-bin": "^0.70.0",
     "fs": "0.0.1-security",
     "gulp": "^3.9.1",
-    "gulp-clean": "^0.3.2",
+    "gulp-clean": "^0.4.0",
     "gulp-util": "^3.0.8",
     "gulp-zip": "^4.0.0",
     "husky": "^0.14.3",
