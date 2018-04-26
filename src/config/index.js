@@ -9,9 +9,13 @@ const getArrayFromFiles = (path) =>
   getFilesInDirectory(path)
     // $FlowFixMe
     .map((filename) => require(`${path}/${filename}`).default)
+    .map((x) => {
+      console.log(x);
+      return x;
+    })
     .reduce((prev, curr) => prev.concat(curr));
 
-const infrastructurePlugins = getArrayFromFiles(`${__dirname}/registrations`);
+const infrastructurePlugins = getArrayFromFiles(`${__dirname}/plugins`);
 
 const routePlugins = getDirectoriesInPath(`${__dirname}/../routes`)
   .map((d) => ({

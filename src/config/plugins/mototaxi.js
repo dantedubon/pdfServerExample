@@ -2,9 +2,9 @@
 
 import * as mototaxi from 'mototaxi';
 import { AwilixResolutionError } from 'awilix';
-import container from '../../container';
+import container from '../container';
 
-import { commandHandlers } from '../../../domain';
+import { commandHandlers } from '../../domain';
 
 const plugin = {
   register: async (server: Object, options: Object) => {
@@ -39,5 +39,4 @@ const plugin = {
   version: '1.0.0',
   options: {},
 };
-
-export default plugin;
+export default [plugin];

@@ -9,7 +9,7 @@ const headersValidation = Joi.object({
   authorization: Joi.string(),
 }).options({ allowUnknown: true });
 
-const plugin = {
+exports.default = {
   pkg: Pack,
   register: async (server: Object, options: Object) => {
     const dispatch = (cmd: Command) =>
@@ -117,5 +117,3 @@ const plugin = {
     ]);
   },
 };
-
-export default plugin;

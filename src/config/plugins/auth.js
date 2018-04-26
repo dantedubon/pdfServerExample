@@ -28,4 +28,4 @@ const plugin = {
   once: true,
   options: {},
 };
-export default plugin;
+export default [plugin];
