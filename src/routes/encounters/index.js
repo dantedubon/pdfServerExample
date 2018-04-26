@@ -26,8 +26,9 @@ const plugin = {
           dispatch({
             type: 'getAllEncounters',
           }),
+
         options: {
-          auth: false,
+          auth: 'jwt',
           tags: ['api'],
           validate: {
             headers: headersValidation,
@@ -39,7 +40,6 @@ const plugin = {
         path: '/encounters/{id}',
         handler: (request, h) => dispatch({ type: 'getOneEncounter', id: request.params.id }),
         options: {
-          auth: false,
           tags: ['api'],
           validate: {
             headers: headersValidation,
@@ -56,7 +56,6 @@ const plugin = {
         path: '/encounters/{id}',
         handler: (request, h) => dispatch({ type: 'removeEncounter', id: request.params.id }),
         options: {
-          auth: false,
           tags: ['api'],
 
           validate: {
@@ -82,9 +81,7 @@ const plugin = {
             },
           }),
         options: {
-          auth: false,
           tags: ['api'],
-
           validate: {
             headers: headersValidation,
             payload: EncounterModel,
@@ -105,9 +102,7 @@ const plugin = {
             },
           }),
         options: {
-          auth: false,
           tags: ['api'],
-
           validate: {
             headers: headersValidation,
             payload: EncounterModel,

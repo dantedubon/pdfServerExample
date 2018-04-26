@@ -19,6 +19,6 @@ const routePlugins = getDirectoriesInPath(`${__dirname}/../routes`)
   }))
   // $FlowFixMe
   .map(({ route }) => require(`${route}`).default);
-const plugins: Array<any> = [].concat(routePlugins, infrastructurePlugins);
+const plugins: Array<any> = [].concat(infrastructurePlugins, routePlugins);
 const register = { plugins };
 export { server, register };
