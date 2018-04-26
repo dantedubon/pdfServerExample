@@ -19,19 +19,17 @@ if (env === 'dev') {
 }
 const goodWinstonStream = new GoodWinston({ winston });
 
-export default [
-  {
-    plugin: 'good',
-    options: {
-      reporters: {
-        winston: [goodWinstonStream],
-        console: [
-          {
-            module: 'good-console',
-          },
-          'stdout',
-        ],
-      },
+export default {
+  plugin: 'good',
+  options: {
+    reporters: {
+      winston: [goodWinstonStream],
+      console: [
+        {
+          module: 'good-console',
+        },
+        'stdout',
+      ],
     },
   },
-];
+};

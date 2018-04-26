@@ -6,7 +6,7 @@ import container from '../container';
 
 import { commandHandlers } from '../../domain';
 
-const plugin = {
+exports.default = {
   register: async (server: Object, options: Object) => {
     const logger = {
       log: (message) => {
@@ -39,4 +39,3 @@ const plugin = {
   version: '1.0.0',
   options: {},
 };
-export default [plugin];

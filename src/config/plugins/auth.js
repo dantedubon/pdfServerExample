@@ -2,7 +2,7 @@
 // const hapiAuthJwt = require('hapi-auth-jwt2');
 import hapiAuthJwt from 'hapi-auth-jwt2';
 
-const plugin = {
+exports.default = {
   register: async (server: Object, options: Object) => {
     const validate = async (decoded, request) => {
       // This validate function is meant to add any layers of security
@@ -28,4 +28,3 @@ const plugin = {
   once: true,
   options: {},
 };
-export default [plugin];
