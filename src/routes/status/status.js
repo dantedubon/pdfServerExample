@@ -5,12 +5,9 @@ const register = async (server: Object, options: Object) => {
   server.route({
     method: 'GET',
     path: '/status',
-    config: {
-      auth: false,
+    handler: (request, h) => h.response(pkg),
+    options: {
       tags: ['api'],
-      handler: (request, reply) => {
-        reply(pkg);
-      },
     },
   });
 };

@@ -21,6 +21,7 @@ export default [
         },
       },
       documentationPath: '/docs',
+      host: 'localhost:8000',
     },
   },
   {

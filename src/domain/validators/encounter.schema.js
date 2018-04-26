@@ -1,9 +1,6 @@
 const Joi = require('joi');
 
 export const EncounterModel = Joi.object({
-  type: Joi.string()
-    .required()
-    .description('Type of the encounter'),
   name: Joi.string()
     .required()
     .description('Name of the encounter'),
