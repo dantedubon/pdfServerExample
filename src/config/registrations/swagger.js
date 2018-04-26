@@ -1,3 +1,5 @@
+import server from '../server';
+
 const Pack = require('../../package.json');
 
 export default [
@@ -21,7 +23,7 @@ export default [
         },
       },
       documentationPath: '/docs',
-      host: 'localhost:8000',
+      host: `localhost:${server.port}`,
     },
   },
   {
