@@ -2940,6 +2940,13 @@ hapi-auth-jwt2@^8.1.0:
     cookie "^0.3.1"
     jsonwebtoken "^8.1.0"
 
+hapi-dev-errors@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/hapi-dev-errors/-/hapi-dev-errors-2.1.0.tgz#181ed8a0dbbbac7f4e20ef2613ebccff87d6734c"
+  dependencies:
+    hoek "~5.0.3"
+    youch "~2.0.7"
+
 hapi-swagger@^9.1.1:
   version "9.1.1"
   resolved "https://registry.yarnpkg.com/hapi-swagger/-/hapi-swagger-9.1.1.tgz#32e06cdaaf6974fb1445abccb0cb1912650561ac"
@@ -3086,7 +3093,7 @@ hoek@4.x.x, hoek@^4.1.0:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-4.2.1.tgz#9634502aa12c445dd5a7c5734b572bb8738aacbb"
 
-hoek@5.x.x, hoek@^5.0.2, hoek@^5.0.3:
+hoek@5.x.x, hoek@^5.0.2, hoek@^5.0.3, hoek@~5.0.3:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-5.0.3.tgz#b71d40d943d0a95da01956b547f83c4a5b4a34ac"
 
@@ -4708,6 +4715,10 @@ multipipe@^0.1.2:
   dependencies:
     duplexer2 "0.0.2"
 
+mustache@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/mustache/-/mustache-2.3.0.tgz#4028f7778b17708a489930a6e52ac3bca0da41d0"
+
 mute-stream@0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.7.tgz#3075ce93bc21b8fab43e1bc4da7e8115ed1e7bab"
@@ -6169,7 +6180,7 @@ stack-generator@^2.0.1:
   dependencies:
     stackframe "^1.0.4"
 
-stack-trace@0.0.x:
+stack-trace@0.0.10, stack-trace@0.0.x:
   version "0.0.10"
   resolved "https://registry.yarnpkg.com/stack-trace/-/stack-trace-0.0.10.tgz#547c70b347e8d32b4e108ea1a2a159e5fdde19c0"
 
@@ -6992,6 +7003,14 @@ yazl@^2.1.0:
   resolved "https://registry.yarnpkg.com/yazl/-/yazl-2.4.3.tgz#ec26e5cc87d5601b9df8432dbdd3cd2e5173a071"
   dependencies:
     buffer-crc32 "~0.2.3"
+
+youch@^2.0.7, youch@~2.0.7:
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/youch/-/youch-2.0.7.tgz#1a4b3af9465d0a974032231db4eb4ca4ae3db6d3"
+  dependencies:
+    cookie "^0.3.1"
+    mustache "^2.3.0"
+    stack-trace "0.0.10"
 
 z-schema@^3.19.1:
   version "3.19.1"

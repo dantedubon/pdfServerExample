@@ -40,6 +40,7 @@ exports.default = {
         path: '/encounters/{id}',
         handler: (request, h) => dispatch({ type: 'getOneEncounter', id: request.params.id }),
         options: {
+          auth: 'jwt',
           tags: ['api'],
           validate: {
             headers: headersValidation,
@@ -57,7 +58,7 @@ exports.default = {
         handler: (request, h) => dispatch({ type: 'removeEncounter', id: request.params.id }),
         options: {
           tags: ['api'],
-
+          auth: 'jwt',
           validate: {
             headers: headersValidation,
             params: {
@@ -82,6 +83,7 @@ exports.default = {
           }),
         options: {
           tags: ['api'],
+          auth: 'jwt',
           validate: {
             headers: headersValidation,
             payload: EncounterModel,
@@ -103,6 +105,7 @@ exports.default = {
           }),
         options: {
           tags: ['api'],
+          auth: 'jwt',
           validate: {
             headers: headersValidation,
             payload: EncounterModel,
