@@ -49,7 +49,7 @@ Glee comes with default database configurarion for `localhost`. You can change y
 
 ## Quick start
 
-This project requires [Node.js][nodejs] 8.2 or later and [NPM][npm], [Yarn][yarn] is optional but recommended. Make sure you have those installed. Then just type following commands:
+This project requires [Node.js][nodejs] 8.11 or later and [NPM][npm], [Yarn][yarn] is optional but recommended. Make sure you have those installed. Then just type following commands:
 
 ```
 git clone https://github.com/acklenavenue/glee
@@ -76,6 +76,7 @@ To create validation schemas, use [Joi objects](https://github.com/hapijs/joi). 
 For aditional features check the [official documentation](https://swagger.io/docs/)
 
 ## Dependency Injection in Glee
+
 Glee uses [Awilix](https://github.com/jeffijoe/awilix) has Dependency Injection Container. By default Glee uses a name based convention to register automatically the dependencies ([This article explain the concept](http://www.rahulpnath.com/blog/ioc-registration-by-convention/)). We have three types of objects that are registered on the container:
 
 * `Command Handlers` - They are the actions fired with [MotoTaxi](https://github.com/AcklenAvenue/mototaxi). By convention they are registered in the container has _Name of Command Handler_ + the sufix **Handler**. To be able to be registered in this way they need to be located on the directory **domain/command-handlers**, like [here](https://github.com/AcklenAvenue/glee/blob/master/src/domain/command-handlers/encounters.js#L10).
@@ -92,8 +93,10 @@ Run using either `npm run <script>` or `yarn run <script>` comand.
 * `lint` - lint source files and tests,
 * `typecheck` - check type annotations,
 * `test` - lint, typecheck and run tests with coverage,
+* `docker:test` - lint, typecheck and run tests with coverage inside the docker container,
 * `test-only` - run tests with coverage,
 * `test:watch` - interactive watch mode to automatically re-run tests,
+* `docker:test:watch` - interactive watch mode to automatically re-run tests inside the docker container,
 * `build` - compile source files,
 * `build:watch` - interactive watch mode, compile sources on change.
 * `aat` - run automated acceptance tests

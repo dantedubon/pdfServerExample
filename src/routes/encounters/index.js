@@ -1,4 +1,6 @@
+/* eslint-disable no-unused-vars */
 import Joi from 'joi';
+import Pack from './package.json';
 import { EncounterModel } from '../../domain/validators/encounter.schema';
 
 import type { Command } from '../../domain/types/encounter';
@@ -7,122 +9,114 @@ const headersValidation = Joi.object({
   authorization: Joi.string(),
 }).options({ allowUnknown: true });
 
-export function register(server: Object, options: Object, next: () => mixed) {
-  const dispatch = (cmd: Command) =>
-    new Promise((resolve) => {
-      server.app.dispatcher.dispatch(cmd).subscribe((response) => {
-        resolve(response);
+exports.default = {
+  pkg: Pack,
+  register: async (server: Object, options: Object) => {
+    const dispatch = (cmd: Command) =>
+      new Promise((resolve) => {
+        server.app.dispatcher.dispatch(cmd).subscribe((response) => {
+          resolve(response);
+        });
       });
-    });
-  server.route([
-    {
-      method: 'GET',
-      path: '/encounters',
-      config: {
-        auth: 'jwt',
-        tags: ['api'],
-        handler: (request, reply) => {
-          reply(
-            dispatch({
-              type: 'getAllEncounters',
-              userId: request.auth.credentials.id,
-            }),
-          );
-        },
-        validate: {
-          headers: headersValidation,
-        },
-      },
-    },
-    {
-      method: 'GET',
-      path: '/encounters/{id}',
-      config: {
-        auth: 'jwt',
-        tags: ['api'],
-        handler: (request, reply) => {
-          reply(dispatch({ type: 'getOneEncounter', id: request.params.id }));
-        },
-        validate: {
-          headers: headersValidation,
-          params: {
-            id: Joi.number()
-              .required()
-              .description('the id for the encounter'),
-          },
-        },
-      },
-    },
-    {
-      method: 'DELETE',
-      path: '/encounters/{id}',
-      config: {
-        auth: 'jwt',
-        tags: ['api'],
-        handler: (request, reply) => {
-          reply(dispatch({ type: 'removeEncounter', id: request.params.id }));
-        },
-        validate: {
-          headers: headersValidation,
-          params: {
-            id: Joi.number()
-              .required()
-              .description('the id for the encounter'),
-          },
-        },
-      },
-    },
-    {
-      method: 'POST',
-      path: '/encounters',
-      config: {
-        auth: 'jwt',
-        tags: ['api'],
-        handler: (request, reply) => {
-          reply(
-            dispatch({
-              type: 'createEncounter',
-              name: 'purple-urple',
-              age: 25,
-              bloodType: 'B+',
-            }),
-          );
-        },
-        validate: {
-          headers: headersValidation,
-          payload: EncounterModel,
-        },
-      },
-    },
-    {
-      method: 'PUT',
-      path: '/encounters/{id}',
-      config: {
-        auth: 'jwt',
-        tags: ['api'],
-        handler: (request, reply) => {
-          reply(
-            dispatch({
-              type: 'modifyEncounter',
-              id: request.params.id,
-              modify: { name: 'cambióaaaaaaa', age: 40 },
-            }),
-          );
-        },
-        validate: {
-          headers: headersValidation,
-          payload: EncounterModel,
-          params: {
-            id: Joi.number()
-              .required()
-              .description('the id for the encounter'),
-          },
-        },
-      },
-    },
-  ]);
+    server.route([
+      {
+        method: 'GET',
+        path: '/encounters',
+        handler: (request, h) =>
+          dispatch({
+            type: 'getAllEncounters',
+          }),
 
-  next();
-}
-
-exports.register.attributes = require('./package.json');
+        options: {
+          auth: 'jwt',
+          tags: ['api'],
+          validate: {
+            headers: headersValidation,
+          },
+        },
+      },
+      {
+        method: 'GET',
+        path: '/encounters/{id}',
+        handler: (request, h) => dispatch({ type: 'getOneEncounter', id: request.params.id }),
+        options: {
+          auth: 'jwt',
+          tags: ['api'],
+          validate: {
+            headers: headersValidation,
+            params: {
+              id: Joi.number()
+                .required()
+                .description('the id for the encounter'),
+            },
+          },
+        },
+      },
+      {
+        method: 'DELETE',
+        path: '/encounters/{id}',
+        handler: (request, h) => dispatch({ type: 'removeEncounter', id: request.params.id }),
+        options: {
+          tags: ['api'],
+          auth: 'jwt',
+          validate: {
+            headers: headersValidation,
+            params: {
+              id: Joi.number()
+                .required()
+                .description('the id for the encounter'),
+            },
+          },
+        },
+      },
+      {
+        method: 'POST',
+        path: '/encounters',
+        handler: (request, h) =>
+          dispatch({
+            type: 'createEncounter',
+            encounter: {
+              name: request.payload.name,
+              age: request.payload.age,
+              bloodType: request.payload.bloodType,
+            },
+          }),
+        options: {
+          tags: ['api'],
+          auth: 'jwt',
+          validate: {
+            headers: headersValidation,
+            payload: EncounterModel,
+          },
+        },
+      },
+      {
+        method: 'PUT',
+        path: '/encounters/{id}',
+        handler: (request, reply) =>
+          dispatch({
+            type: 'modifyEncounter',
+            id: request.params.id,
+            modify: {
+              name: request.payload.name,
+              age: request.payload.age,
+              bloodType: request.payload.bloodType,
+            },
+          }),
+        options: {
+          tags: ['api'],
+          auth: 'jwt',
+          validate: {
+            headers: headersValidation,
+            payload: EncounterModel,
+            params: {
+              id: Joi.number()
+                .required()
+                .description('the id for the encounter'),
+            },
+          },
+        },
+      },
+    ]);
+  },
+};

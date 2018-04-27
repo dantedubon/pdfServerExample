@@ -1,3 +1,5 @@
+const Sequelize = require('sequelize');
+
 module.exports = {
   production: {
     username: process.env.PG_USER,
@@ -19,5 +21,7 @@ module.exports = {
     database: process.env.PG_DATABASE,
     host: process.env.PG_HOST,
     dialect: 'postgres',
+    operatorsAliases: Sequelize.Op,
   },
 };
+
