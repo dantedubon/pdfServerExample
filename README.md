@@ -93,8 +93,10 @@ Run using either `npm run <script>` or `yarn run <script>` comand.
 * `lint` - lint source files and tests,
 * `typecheck` - check type annotations,
 * `test` - lint, typecheck and run tests with coverage,
+* `docker:test` - lint, typecheck and run tests with coverage inside the docker container,
 * `test-only` - run tests with coverage,
 * `test:watch` - interactive watch mode to automatically re-run tests,
+* `docker:test:watch` - interactive watch mode to automatically re-run tests inside the docker container,
 * `build` - compile source files,
 * `build:watch` - interactive watch mode, compile sources on change.
 * `aat` - run automated acceptance tests
