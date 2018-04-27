@@ -1,35 +1,30 @@
-const hapiAuthJwt = require('hapi-auth-jwt2');
+/* eslint-disable no-unused-vars, global-require */
+// const hapiAuthJwt = require('hapi-auth-jwt2');
+import hapiAuthJwt from 'hapi-auth-jwt2';
 
-export function register(server: Object, options: Object, next: () => mixed) {
-  const validate = (decoded, request, callback) => {
-    // This validate function is meant to add any layers of security
-    // we think are necessary. In most cases, no additional checks are
-    // necessary since the IDP has already verified the identity and
-    // credentials of the user.
+exports.default = {
+  register: async (server: Object, options: Object) => {
+    const validate = async (decoded, request) => {
+      // This validate function is meant to add any layers of security
+      // we think are necessary. In most cases, no additional checks are
+      // necessary since the IDP has already verified the identity and
+      // credentials of the user.
+      if (decoded) {
+        return { isValid: true };
+      }
+      return { isValid: false };
+    };
 
-    const isNicePerson = true;
-
-    if (!isNicePerson) {
-      return callback(null, false);
-    }
-
-    return callback(null, true);
-  };
-
-  server.register(hapiAuthJwt, (err) => {
-    if (err) {
-      throw new Error(err);
-    }
-
+    await server.register(hapiAuthJwt);
     server.auth.strategy('jwt', 'jwt', {
       key: process.env.AUTH_SHARED_KEY || 'NeverShareYourSecret',
-      validateFunc: validate,
+      validate,
       verifyOptions: { algorithms: ['HS256'] },
     });
-
     server.auth.default('jwt');
-    next();
-  });
-}
-
-exports.register.attributes = { name: 'auth', version: '1.0.0' };
+  },
+  name: 'auth',
+  version: '2.0.0',
+  once: true,
+  options: {},
+};

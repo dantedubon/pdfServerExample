@@ -1,18 +1,11 @@
-const pkg = require('./package.json');
+import register from './status';
 
-export function register(server: Object, options: Object, next: () => mixed) {
-  server.route({
-    method: 'GET',
-    path: '/status',
-    config: {
-      auth: false,
-      tags: ['api'],
-      handler: (request, reply) => {
-        reply(pkg);
-      },
-    },
-  });
-  next();
-}
+const plugin = {
+  register,
+  name: 'status',
+  version: '2.0.0',
+  once: true,
+  options: {},
+};
 
-exports.register.attributes = pkg;
+export default plugin;
