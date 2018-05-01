@@ -20,7 +20,7 @@ services:
       - PG_DATABASE=todos
       - PG_HOST=postgres
   postgres:
-    image: postgres:9.6.2-alpine
+    image: postgres:10.3-alpine
     environment:
       POSTGRES_USER: todoapp
       POSTGRES_DB: todos
