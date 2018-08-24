@@ -4,6 +4,8 @@ FROM node:8.11.1
 WORKDIR /usr/src/app
 
 # Install app dependencies
+RUN apt-get update
+RUN apt-get install libreoffice -y
 RUN npm install -g nodemon
 COPY package.json package-lock.json ./
 COPY src/config/loggly.js.sample src/config/loggly.js

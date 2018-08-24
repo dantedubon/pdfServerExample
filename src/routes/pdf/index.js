@@ -71,7 +71,7 @@ exports.default = {
               // .type('application/vnd.openxmlformats-officedocument.wordprocessingml.document')
               .type('application/pdf')
               .header('Content-length', pdfBuffer.length)
-              .header('Content-disposition', 'attachment; filename= appartamentLease.pdf')
+              .header('Content-disposition', 'inline; filename= appartamentLease.pdf')
               .encoding('binary');
 
             return response;
