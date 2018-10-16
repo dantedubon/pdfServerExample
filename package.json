@@ -61,7 +61,7 @@
     "joi": "^13.2.0",
     "jszip": "2",
     "mototaxi": "^1.1.68",
-    "office-to-pdf": "^4.0.0",
+    "officetopdfaa": "git+https://github.com/AcklenAvenue/officeToPDFAA.git",
     "pg": "^7.1.0",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.4.2",

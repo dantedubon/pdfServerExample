@@ -2,7 +2,7 @@ import JSZip from 'jszip';
 import Docxtemplater from 'docxtemplater';
 import fs from 'fs';
 import path from 'path';
-import toPdf from 'office-to-pdf';
+import toPdf from 'officetopdfaa';
 import Pack from './package.json';
 
 exports.default = {
